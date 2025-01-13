@@ -1,0 +1,5 @@
+1. create an sqlite3 db with the command `sqlite3 <dbname>`
+2. create the tables with the command `.read create_table.sql`
+3. insert data with the command `.read unrefined_dump.sql`
+4. refine the data with the command `.read alter_queries.sql`
+5. insert the client name (it is missing in the original data) with the command `.read client_names.sql`

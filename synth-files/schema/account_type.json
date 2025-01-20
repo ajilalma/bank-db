@@ -1,0 +1,22 @@
+{
+    "type": "array",
+    "length": 4,
+    "content": {
+        "type": "object",
+        "id": {
+            "type": "unique",
+            "content": {
+                "type": "number",
+                "id": {}
+            }
+        },
+        "name": {
+            "type": "string",
+            "pattern": "Account type [0-9]{2}"
+        },
+        "category": {
+            "type": "string",
+            "pattern": "CHECKING|SAVINGS|CREDITCARD|LOAN"
+        }
+    }
+}

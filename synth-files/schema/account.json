@@ -1,0 +1,82 @@
+{
+    "type": "array",
+    "length": 4000,
+    "content": {
+        "type": "object",
+        "id": {
+            "type": "unique",
+            "content": {
+                "type": "number",
+                "range": {
+                    "low": 100000,
+                    "high": 9999999
+                }
+            }
+        },
+        "customer_id": {
+            "type": "same_as",
+            "ref": "customer.content.id"
+        },
+        "account_type_id": {
+            "type": "same_as",
+            "ref": "account_type.content.id"
+        },
+        "balance": {
+            "type": "one_of",
+            "variants": [
+                {
+                    "type": "number",
+                    "range": {
+                        "low": 10000,
+                        "high": 75000
+                    },
+                    "weight": 0.80
+                },
+                {
+                    "type": "number",
+                    "range": {
+                        "low": 80000,
+                        "high": 1000000
+                    },
+                    "weight": 0.15
+                },
+                {
+                    "type": "number",
+                    "range": {
+                        "low": 1000000,
+                        "high": 10000000
+                    },
+                    "weight": 0.03
+                },
+                {
+                    "type": "number",
+                    "range": {
+                        "low": 10000000,
+                        "high": 100000000
+                    },
+                    "weight": 0.02
+                }
+            ]
+        },
+        "status": {
+            "type": "one_of",
+            "variants": [
+                {
+                    "type": "string",
+                    "constant": "ACTIVE",
+                    "weight": 0.95
+                },
+                {
+                    "type": "string",
+                    "constant": "DORMANT",
+                    "weight": 0.03
+                },
+                {
+                    "type": "string",
+                    "constant": "CLOSED",
+                    "weight": 0.02
+                }
+            ]
+        }
+    }
+}

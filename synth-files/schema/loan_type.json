@@ -1,0 +1,49 @@
+{
+    "type": "array",
+    "length": 3,
+    "content": {
+        "type": "object",
+        "id": {
+            "type": "unique",
+            "content": {
+                "type": "number",
+                "id": {}
+            }
+        },
+        "loan_type": {
+            "type": "unique",
+            "content": {
+                "type": "string",
+                "pattern": "CAR_LOAN|HOME_LOAN|BUSINESS_LOAN"
+            }
+        },
+        "description": {
+            "type": "string",
+            "pattern": "[A-Z]([a-z ]{10})"
+        },
+        "base_interest": {
+            "type": "unique",
+            "content": {
+                "type": "one_of",
+                "variants": [
+                    {
+                        "type": "number",
+                        "constant": 10.99
+                    },
+                    {
+                        "type": "number",
+                        "constant": 9.99
+                    },
+                    {
+                        "type": "number",
+                        "constant": 11.99
+                    }
+                ]
+            }
+        },
+        "base_amount": {
+            "type": "number",
+            "constant": 10000
+        }
+    }
+}

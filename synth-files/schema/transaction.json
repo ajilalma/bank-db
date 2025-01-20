@@ -1,0 +1,121 @@
+{
+    "type": "array",
+    "length": 50000,
+    "content": {
+        "type": "object",
+        "id": {
+            "type": "string",
+            "uuid": {}
+        },
+        "account_id": {
+            "type": "same_as",
+            "ref": "account.content.id"
+        },
+        "category": {
+            "type": "string",
+            "pattern": "DEBIT|CREDIT"
+        },
+        "channel": {
+            "type": "string",
+            "pattern": "BRANCH|ATM|ONLINE"
+        },
+        "amount": {
+            "type": "one_of",
+            "variants": [
+                {
+                    "type": "number",
+                    "range": {
+                        "low": 3,
+                        "high": 15
+                    },
+                    "weight": 0.05
+                },
+                {
+                    "type": "number",
+                    "range": {
+                        "low": 20,
+                        "high": 100
+                    },
+                    "weight": 0.30
+                },
+                {
+                    "type": "number",
+                    "range": {
+                        "low": 100,
+                        "high": 2000
+                    },
+                    "weight": 0.30
+                },
+                {
+                    "type": "number",
+                    "range": {
+                        "low": 3000,
+                        "high": 10000
+                    },
+                    "weight": 0.20
+                },
+                {
+                    "type": "number",
+                    "range": {
+                        "low": 10000,
+                        "high": 100000
+                    },
+                    "weight": 0.10
+                },
+                {
+                    "type": "number",
+                    "range": {
+                        "low": 100000,
+                        "high": 400000
+                    },
+                    "weight": 0.05
+                }
+            ]
+            
+        },
+        "description": {
+            "type": "string",
+            "pattern": "[A-Za-z0-9]{10}"
+        },
+        "other_bank_id": {
+            "type": "string",
+            "pattern": "[0-9]{9}"
+        },
+        "other_bank_account_num": {
+            "type": "string",
+            "pattern": "[0-9]{12}"
+        },
+        "fees": {
+            "type": "one_of",
+            "variants": [
+                {
+                    "type": "number",
+                    "constant": 0.0,
+                    "weight": 0.5
+                },
+                {
+                    "type": "number",
+                    "constant": 10.0,
+                    "weight": 0.3
+                },
+                {
+                    "type": "number",
+                    "constant": 15.0,
+                    "weight": 0.1
+                },
+                {
+                    "type": "number",
+                    "constant": 100.0,
+                    "weight": 0.1
+                }
+            ]
+        },
+        "create_time": {
+            "type": "date_time",
+            "subtype": "naive_date_time",
+            "format": "%Y-%m-%dT%H:%M:%S.000",
+            "begin": "1990-01-01T00:00:00.000",
+            "end": "2025-01-01T00:00:00.000"
+        }
+    }
+}

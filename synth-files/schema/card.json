@@ -1,0 +1,54 @@
+{
+    "type": "array",
+    "length": 5000,
+    "content": {
+        "type": "object",
+        "id": {
+            "type": "unique",
+            "content": {
+                "type": "number",
+                "id": {}
+            }
+        },
+        "account_id": {
+            "type": "same_as",
+            "ref": "account.content.id"
+        },
+        "card_number": {
+            "type": "string",
+            "pattern": "[1-9][0-9]{11}"
+        },
+        "expiration_month": {
+            "type": "string",
+            "pattern": "20[3-4][0-9]-(00|01|02|03|04|05|06|07|08|09|10|11)"
+        },
+        "cvv": {
+            "type": "string",
+            "pattern": "[0-9]{3}"
+        },
+        "pin_hash": {
+            "type": "string",
+            "pattern": "[A-Z0-9]{20}"
+        },
+        "status": {
+            "type": "one_of",
+            "variants": [
+                {
+                    "type": "string",
+                    "constant": "ACTIVE",
+                    "weight": 0.70
+                },
+                {
+                    "type": "string",
+                    "constant": "INACTIVE",
+                    "weight": 0.25
+                },
+                {
+                    "type": "string",
+                    "constant": "BLOCKED",
+                    "weight": 0.05
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,23 @@
+Step #1
+=======
+Install Synth using the following command in a linux or mac system
+curl -sSL https://getsynth.com/install | sudo sh
+
+or follow the instructions on this page
+https://www.getsynth.com
+
+Step #2
+=======
+Open terminal in the synth-files directory and run the following command
+synth generate schema/ > output.json
+
+the output will be generated as a json file named output.json
+
+Step #3
+=======
+Refine the data to avoid inconsistensies if needed.
+Few of the checks to do are given below.
+
+1. customer create date should be greater than the date of birth
+2. update the type of all accounts to LOAN if a loan record is associated with it.
+3. update balance of loan accounts below the loan amount

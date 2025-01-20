@@ -1,0 +1,78 @@
+{
+    "type": "array",
+    "length": 1000,
+    "content": {
+        "type": "object",
+        "id": {
+            "type": "unique",
+            "content": {
+                "type": "number",
+                "id": {}
+            }
+        },
+        "account_id": {
+            "type": "same_as",
+            "ref": "account.content.id"
+        },
+        "amount": {
+            "type": "number",
+            "range": {
+                "low": 25,
+                "high": 10000
+            }
+        },
+        "frequency": {
+            "type": "string",
+            "pattern": "WEEKLY|BIWEEKLY|MONTHLY"
+        },
+        "start_date": {
+            "type": "date_time",
+            "subtype": "naive_date_time",
+            "format": "%Y-%m-%dT%H:%M:%S.000",
+            "begin": "1990-01-01T00:00:00.000",
+            "end": "2025-01-01T00:00:00.000"
+        },
+        "end_date": {
+            "type": "date_time",
+            "subtype": "naive_date_time",
+            "format": "%Y-%m-%dT%H:%M:%S.000",
+            "begin": "2025-01-01T00:00:00.000",
+            "end": "2045-01-01T00:00:00.000"
+        },
+        "next_debit_date": {
+            "type": "date_time",
+            "subtype": "naive_date_time",
+            "format": "%Y-%m-%dT%H:%M:%S.000",
+            "begin": "2025-02-01T00:00:00.000",
+            "end": "2025-03-01T00:00:00.000"
+        },
+        "other_bank_id": {
+            "type": "string",
+            "pattern": "[0-9]{9}"
+        },
+        "other_bank_account_num": {
+            "type": "string",
+            "pattern": "[0-9]{12}"
+        },
+        "status": {
+            "type": "one_of",
+            "variants": [
+                {
+                    "type": "string",
+                    "constant": "ACTIVE",
+                    "weight": 0.60
+                },
+                {
+                    "type": "string",
+                    "constant": "SUSPENDED",
+                    "weight": 0.30
+                },
+                {
+                    "type": "string",
+                    "constant": "DELTED",
+                    "weight": 0.10
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,125 @@
+{
+    "type": "array",
+    "length": 2000,
+    "content": {
+        "type": "object",
+        "id": {
+            "type": "unique",
+            "content": {
+                "type": "number",
+                "id": {}
+            }
+        },
+        "loan_type_id": {
+            "type": "same_as",
+            "ref": "loan_type.content.id"
+        },
+        "account_id": {
+            "type": "unique",
+            "content": {
+                "type": "same_as",
+                "ref": "account.content.id"
+            }
+        },
+        "allocated_amount": {
+            "type": "one_of",
+            "variants": [
+                {
+                    "type": "number",
+                    "range": {
+                        "low": 10000,
+                        "high": 25000
+                    },
+                    "weight": 0.80
+                },
+                {
+                    "type": "number",
+                    "range": {
+                        "low": 30000,
+                        "high": 70000
+                    },
+                    "weight": 0.15
+                },
+                {
+                    "type": "number",
+                    "range": {
+                        "low": 80000,
+                        "high": 90000
+                    },
+                    "weight": 0.03
+                },
+                {
+                    "type": "number",
+                    "range": {
+                        "low": 1000000,
+                        "high": 1100000
+                    },
+                    "weight": 0.02
+                }
+            ]
+        },
+        "interest": {
+            "type": "one_of",
+            "variants": [
+                {
+                    "type": "number",
+                    "constant": 9.99,
+                    "weight": 0.25
+                },
+                {
+                    "type": "number",
+                    "constant": 10.99,
+                    "weight": 0.25
+                    
+                },
+                {
+                    "type": "number",
+                    "constant": 11.99,
+                    "weight": 0.50
+                }
+            ]
+        },
+        "start_date": {
+            "type": "one_of",
+            "variants": [
+                {
+                    "type": "date_time",
+                    "subtype": "naive_date_time",
+                    "format": "%Y-%m-%dT%H:%M:%S.000",
+                    "begin": "1990-01-01T00:00:00.000",
+                    "end": "2015-01-01T00:00:00.000",
+                    "weight": 0.95
+                },
+                {
+                    "type": "date_time",
+                    "subtype": "naive_date_time",
+                    "format": "%Y-%m-%dT%H:%M:%S.000",
+                    "begin": "2015-01-01T00:00:00.000",
+                    "end": "2025-01-01T00:00:00.000",
+                    "weight": 0.05
+                }
+            ]
+        },
+        "due_date": {
+            "type": "one_of",
+            "variants": [
+                {
+                    "type": "date_time",
+                    "subtype": "naive_date_time",
+                    "format": "%Y-%m-%dT%H:%M:%S.000",
+                    "begin": "2025-02-01T00:00:00.000",
+                    "end": "2030-01-01T00:00:00.000",
+                    "weight": 0.50
+                },
+                {
+                    "type": "date_time",
+                    "subtype": "naive_date_time",
+                    "format": "%Y-%m-%dT%H:%M:%S.000",
+                    "begin": "2030-01-01T00:00:00.000",
+                    "end": "2050-01-01T00:00:00.000",
+                    "weight": 0.50
+                }
+            ]
+        }
+    }
+}

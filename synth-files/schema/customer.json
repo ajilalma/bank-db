@@ -1,0 +1,97 @@
+{
+    "type": "array",
+    "length": 3000,
+    "content": {
+        "type": "object",
+        "id": {
+            "type": "unique",
+            "content": {
+                "type": "number",
+                "range": {
+                    "low": 1,
+                    "high": 9999999
+                }
+            }
+        },
+        "first_name": {
+            "type": "string",
+            "faker": {
+                "generator": "first_name"
+            }
+        },
+        "last_name": {
+            "type": "string",
+            "faker": {
+                "generator": "last_name"
+            }
+        },
+        "email": {
+            "type": "string",
+            "faker": {
+                "generator": "safe_email"
+            }
+        },
+        "date_of_birth": {
+            "type": "date_time",
+            "subtype": "naive_date_time",
+            "format": "%Y-%m-%dT%H:%M:%S.000",
+            "begin": "1960-01-01T00:00:00.000",
+            "end": "2013-01-01T00:00:00.000"
+        },
+        "gender": {
+            "type": "one_of",
+            "variants": [
+                {
+                    "type": "string",
+                    "constant": "MALE",
+                    "weight": 0.48
+                },
+                {
+                    "type": "string",
+                    "constant": "FEMALE",
+                    "weight": 0.48
+                },
+                {
+                    "type": "string",
+                    "constant": "OTHER",
+                    "weight": 0.02
+                }
+            ]
+        },
+        "nationality": {
+            "type": "one_of",
+            "variants": [
+                {
+                    "type": "string",
+                    "constant": "US",
+                    "weight": 0.95
+                },
+                {
+                    "type": "string",
+                    "constant": "CA",
+                    "weight": 0.03
+                },
+                {
+                    "type": "string",
+                    "constant": "IN",
+                    "weight": 0.02
+                }
+            ]
+        },
+        "ssn": {
+            "type": "string",
+            "pattern": "[0-9]{9}"
+        },
+        "branch_id": {
+            "type": "same_as",
+            "ref": "branch.content.id"
+        },
+        "create_time": {
+            "type": "date_time",
+            "subtype": "naive_date_time",
+            "format": "%Y-%m-%dT%H:%M:%S.000",
+            "begin": "1990-01-01T00:00:00.000",
+            "end": "2025-01-01T00:00:00.000"
+        }
+    }
+}
